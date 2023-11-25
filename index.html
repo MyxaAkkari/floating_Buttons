@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="buttons" style="left: 10px; top: 10px; position: absolute;">
+        <button onclick="changeColor(event.target)" id="btn1">Blue</button>
+        <button onclick="changeColor(event.target)" id="btn2">Red</button>
+        <button onclick="changeColor(event.target)" id="btn3">Green</button><br>
+        <button onclick="changeColor(event.target)" id="btn4">Blue screen</button>
+        <button onclick="changeColor(event.target)" id="btn5">Red screen</button>
+        <button onclick="changeColor(event.target)" id="btn6">Green screen</button><br>
+    </div>
+    <script>
+        function changeColor(btn) {
+            switch (btn) {
+                case btn1:
+                    btn1.style.backgroundColor = "blue"
+                    break;
+                case btn2:
+                    btn2.style.backgroundColor = "red"
+                    break;
+                case btn3:
+                    btn3.style.backgroundColor = "green"
+                    break;
+                case btn4:
+                    document.body.style.backgroundColor = "blue"
+                    break;
+                case btn5:
+                    document.body.style.backgroundColor = "red"
+                    break;
+                case btn6:
+                    document.body.style.backgroundColor = "green"
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+
+        let x = 10
+        let y = 10
+        let go_down = true
+
+
+        function move_down() {
+            if (x == 580 && y == 580) {
+                go_down = false
+            } else {
+                buttons.style.top = `${y}px`
+                buttons.style.left = `${x*2}px`
+                x++
+                y++
+            }
+        }
+
+        function move_up() {
+            if (x == 10 && y == 10) {
+                go_down = true
+            } else {
+                buttons.style.top = `${y}px`
+                buttons.style.left = `${x*2}px`
+                x--
+                y--
+            }
+        }
+
+        function move() {
+            if (go_down) {
+                move_down()
+            } else {
+                move_up()
+            }
+        }
+
+        setInterval(move,10)
+
+    </script>
+</body>
+
+</html>
